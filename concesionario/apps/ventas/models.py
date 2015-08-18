@@ -12,10 +12,7 @@ class Categoria(models.Model):
 		return self.nombre
 
 class Automovil(models.Model):
-	estados = (
-			(u'disponible',u'Dispoible'),
-			(u'no_dispobile',u'No disponible'),
-		)
+
 	combustible = (
 			(u'gasolina',u'Gasolina'),
 			(u'acpm',u'ACPM'),
@@ -41,6 +38,11 @@ class Automovil(models.Model):
 			(u'Tricuerpo',u'Tricuerpo'),
 			(u'Todoterreno',u'Todoterreno'),
 		)
+	def url (self, filename):
+		ruta = "MultimediaData/Vehiculo/%s/%s"%(self.nombre, str (filename))
+		return ruta
+
+	imagen				= models.ImageField(upload_to = url)
 	nombre 				= models.CharField(max_length = 20)
 	marca				= models.CharField(max_length = 10, default = "Ferrari")
 	modelo				= models.CharField(max_length = 20)	
@@ -55,7 +57,7 @@ class Automovil(models.Model):
 	numero_motor		= models.CharField(max_length = 10)
 	numero_chasis		= models.CharField(max_length = 10)
 	precio				= models.DecimalField(max_digits = 10, decimal_places = 5)
-	estado				= models.CharField(max_length = 10, choices = estados, default = "Dispoible")
+	estado				= models.CharField(max_length = 10, default = "Dispoible")
 	fecha 				= models.DateField(auto_now_add = True)
 	def __unicode__(self):
 		return self.nombre
