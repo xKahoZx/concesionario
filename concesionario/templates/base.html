@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}Titulo Base {% endblock %}</title>
+</head>
+<body>
+	<h2>Concecionario</h2>
+	<header>
+		<nav>
+			<a href="#">Inicio</a>
+			<a href="#">Vehiculo</a>
+		</nav>
+
+	</header>
+	<section>
+		{% block content %}
+		{% endblock %}
+	</section>
+		
+</body>
+</html>
